@@ -65,4 +65,23 @@ public class MetricBuilder {
 		Gson gson = new Gson();
 		return gson.fromJson(json, Metric.class);
 	}
+	
+	/**
+	 * Convert a stock quote to metric
+	 * @param q
+	 * @return
+	 */
+	public static Metric StockQuoteToMetric(StockQuote q) {
+		return new MetricBuilder()
+			.setTable("stock")
+			.setTimeStamp(q.getTimeStamp())
+			.addTag("symbol=" + q.getTicker())
+			.addField("open=" + q.getOpen())
+			.addField("close=" + q.getClose())
+			.addField("high=" + q.getHigh())
+			.addField("low=" + q.getLow())
+			.addField("adj_close=" + q.getAdjClose())
+			.addField("volume=" + q.getVolume())
+			.build();
+	}
 }

@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.infoxu.livermore.storage.StorageClient;
 
-public class BaseCollector implements Collector {
+public abstract class BaseCollector implements Collector {
 	private Logger logger = Logger.getLogger(BaseCollector.class);
 	
 	private String config = null;
@@ -40,25 +40,7 @@ public class BaseCollector implements Collector {
 	/**
 	 * Collect metrics
 	 */
-	public String collect() throws IOException {
-		File tmpFile = File.createTempFile("livermore", "collector.metrics");
-		
-		return tmpFile.getAbsolutePath();
-	}
+	public abstract String collect() throws IOException;
 
-	public void setConfig(String configFilePath) {
-		if (config == null) {
-			throw new IllegalStateException("Invalid config file: " + config);
-		}
-		
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		BaseCollector collector = new BaseCollector();
-
-	}
-
+	public abstract void setConfig(String configFilePath);
 }

@@ -17,13 +17,14 @@ public class StockQuote {
 	private double low = 0d;
 	private double adjClose = 0d;
 	private long volume = 0L;
+	private long timeStamp = 0L; // In nanoseconds
 
 	public StockQuote() {
 
 	}
 
 	public StockQuote(String ticker, double open, double close, double high,
-			double low, double adjClose, long volume) {
+			double low, double adjClose, long volume, long timeStamp) {
 		this.ticker = ticker;
 		this.open = open;
 		this.close = close;
@@ -31,6 +32,7 @@ public class StockQuote {
 		this.low = low;
 		this.adjClose = adjClose;
 		this.volume = volume;
+		this.timeStamp = timeStamp;
 	}
 
 	public String getTicker() {
@@ -87,5 +89,13 @@ public class StockQuote {
 
 	public void setVolume(long volume) {
 		this.volume = volume;
+	}
+
+	public long getTimeStamp() {
+		return timeStamp;
+	}
+
+	public void setTimeStamp(long timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 }

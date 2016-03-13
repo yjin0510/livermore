@@ -115,6 +115,7 @@ public class InfluxDBClient implements StorageClient {
 					points.add(point.get());
 				}
 				if (points.size() % POINT_BUF == POINT_BUF - 1) {
+					logger.info("Flushing " + points.size() + " points.");
 					writeOutPoints(points);
 					points.clear();
 				}
